@@ -3,7 +3,7 @@ import {
   Plus, Search, FileText, Link as LinkIcon, 
   User, Shield, Trash2, Edit3, 
   Download, Grid, List, Loader2,
-  Clock, Tag, Lock as LockIcon, LayoutGrid
+  Clock, Tag, Lock as LockIcon, LayoutGrid, ChevronRight
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { cn } from "../lib/utils";
