@@ -1,0 +1,41 @@
+{
+  "entities": {
+    "VaultItem": {
+      "title": "Vault Item",
+      "description": "A secure item stored in the user's digital vault.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier" },
+        "title": { "type": "string", "description": "Title of the item" },
+        "content": { "type": "string", "description": "Content of the item (encrypted or plain)" },
+        "category": { "type": "string", "enum": ["notes", "links", "contacts", "documents"], "description": "Category of the item" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update timestamp" },
+        "tags": { "type": "array", "items": { "type": "string" }, "description": "Optional tags" },
+        "uid": { "type": "string", "description": "Owner's user ID" }
+      },
+      "required": ["id", "title", "content", "category", "updatedAt", "uid"]
+    },
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Basic information about the user.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique user ID" },
+        "email": { "type": "string", "format": "email", "description": "User email address" },
+        "displayName": { "type": "string", "description": "User display name" },
+        "role": { "type": "string", "enum": ["user", "admin"], "description": "User role" }
+      },
+      "required": ["uid", "email"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "UserProfile",
+      "description": "User profile document"
+    },
+    "/vault/{itemId}": {
+      "schema": "VaultItem",
+      "description": "Individual vault items"
+    }
+  }
+}
